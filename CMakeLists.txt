@@ -27,8 +27,10 @@ endif()
 
 set(CMKAEUP_ROOT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/build/cmakeup-main/cmakeup")
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMKAEUP_ROOT_PATH}/module")
+set(CMAKEUP_DEP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/build/_cmakeup_hub" CACHE STRING 
+    "cmakeup dep root path, default `${CMAKE_CURRENT_SOURCE_DIR}/build/_cmakeup_hub`.")
 include(cmakeup)
-cmakeup_init("${CMAKE_CURRENT_SOURCE_DIR}/build/_cmakeup_hub" "https://ghproxy.com/https://github.com")
+cmakeup_init(${CMAKEUP_DEP_PATH} "https://ghproxy.com/https://github.com")
 cmakeup_root_path_register(${CMKAEUP_ROOT_PATH})
 
 cmakeup_pkg_cmake_importer("Tencent" "rapidjson")
